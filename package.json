@@ -2,18 +2,21 @@
   "name": "contact-card",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "dependencies": {
     "concurrently": "^7.4.0"
   },
-  "devDependencies": {},
+  "engines": {
+    "node": "17.x"
+  },
   "scripts": {
     "start:dev": "concurrently \"cd server && npm run server\" \"cd client && npm run dev\"",
-    "start": "cd server && node server.js",
+    "start": "npm run build && cd server && node server.js",
     "server": "cd server node server.js --ignore client",
     "build": "cd client && npm run build",
     "install": "concurrently \"cd client && npm install\" \"cd server && npm install\" ",
-    "client": "cd client && npm start"
+    "client": "cd client && npm start",
+    "heroku-prebuild": "npm install --dev"
   },
   "repository": {
     "type": "git",
